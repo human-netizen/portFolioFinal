@@ -1,0 +1,20 @@
+# Normalise line endings: keep LF in the repository, check out native.
+* text=auto
+
+# Explicitly text
+*.cs      text diff=csharp
+*.cshtml  text
+*.csproj  text
+*.sln     text eol=crlf
+*.json    text
+*.css     text
+*.js      text
+*.md      text
+
+# Explicitly binary
+*.png     binary
+*.jpg     binary
+*.ico     binary
+*.dll     binary
+*.exe     binary
+*.pdb     binary
