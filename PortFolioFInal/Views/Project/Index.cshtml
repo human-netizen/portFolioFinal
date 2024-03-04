@@ -1,0 +1,120 @@
+﻿@model List<Project>
+
+<div class="row pt-4 pb-2">
+    <div class="col-6">
+        <h2>project List</h2>
+    </div>
+    <div class="col-6 text-end">
+        <button id="addRowBtn" class="btn btn-success" onclick="addRow()" style="display:none;"> <i class="bi bi-plus"></i> Add New Row</button>
+        <button id="editListBtn" class="btn btn-primary" onclick="enableEditMode()"> <i class="bi bi-plus-circle"></i> Edit List</button>
+        <button id="updateBtn" class="btn btn-primary" style="display:none;"> <i class="bi bi-check-circle"></i> Update</button>
+    </div>
+</div>
+
+<form id="editForm" asp-action="UpdateList" method="post" style="display:none;">
+    <table id="projectTable" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Link
+                </th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td>
+                        <input type="text" asp-for="@Model[i].projectName" />
+                    </td>
+                    <td>
+                        <input type="text" asp-for="@Model[i].projectDescription" />
+                    </td>
+                    <td>
+                        <input type="text" asp-for="@Model[i].projectLink" />
+                    </td>
+                    
+                </tr>
+            }
+        </tbody>
+    </table>
+    <button type="submit" id="updateSubmitBtn" style="display:none;"></button>
+</form>
+
+<table id="readOnlyTable" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Link
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.projectName
+                </td>
+                <td>
+                    @item.projectDescription
+                </td>
+                <td>
+                    @item.projectLink
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts {
+    <script>
+        function enableEditMode() {
+            document.getElementById('readOnlyTable').style.display = 'none';
+            document.getElementById('editForm').style.display = 'block';
+            document.getElementById('addRowBtn').style.display = 'block';
+            document.getElementById('updateBtn').style.display = 'block';
+        }
+
+        function updateRow(index) {
+            document.getElementById('editForm').submit();
+        }
+
+        function addRow() {
+            var table = document.getElementById('projectTable').getElementsByTagName('tbody')[0];
+            var newRow = table.insertRow(table.rows.length);
+
+            // You can add more cells or customize this part based on your model structure
+            var cell1 = newRow.insertCell(0);
+            var cell2 = newRow.insertCell(1);
+            var cell3 = newRow.insertCell(2);
+
+
+            cell1.innerHTML = '<input type="text" name="newProjects[' + table.rows.length + '].projectName" />';
+            cell2.innerHTML = '<input type="text" name="newProjects[' + table.rows.length + '].projectDescription" />';
+            cell3.innerHTML = '<input type="text" name="newProjects[' + table.rows.length + '].projectLink" />';
+
+        }
+
+        // Trigger form submission when the "Update" button is clicked
+        document.getElementById('updateBtn').addEventListener('click', function() {
+
+            document.getElementById('updateSubmitBtn').click();
+        });
+    </script>
+}
