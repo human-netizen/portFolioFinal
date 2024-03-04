@@ -1,0 +1,104 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+.flex-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.profile-image {
+    width: 400px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 50%; /* Optional: For a circular image */
+}
+
+.typing {
+    display: inline-block;
+}
+
+.typed-cursor {
+    display: inline-block;
+    width: 1px;
+    height: 1.2em;
+    background-color: black;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+/* styles.css */
+
+.icon {
+    width: 30px; /* Adjust the width as needed */
+    height: 30px; /* Adjust the height as needed */
+    margin-right: 10px; /* Add some spacing between icons */
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out; /* Add a subtle transition effect */
+}
+
+    .icon:hover {
+        transform: scale(1.2); /* Increase the size on hover */
+    }
+
+.timeline-item {
+    transform: translateY(20px);
+    transition: opacity 1s, transform 1s;
+    width: 30%; /* Set the width */
+
+    border-radius: 8px; /* Add border-radius for a square shape */
+    background-color: #3498db; /* Set the background color */
+    color: #fff; /* Set the text color */
+    text-align: center; /* Center the text */
+    line-height: 50px; /* Center the text vertically */
+    margin-left: 35%; /* Add some margin between timeline items */
+}
+
+
+    .timeline-item.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+.proContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+.noobContainer {
+    width: 150px;
+    height: 100px;
+    margin: 10px;
+    text-align: center;
+
+}
+.project-card {
+    transition: transform 0.3s ease-in-out;
+}
+
+    .project-card:hover {
+        transform: scale(1.05);
+    }
